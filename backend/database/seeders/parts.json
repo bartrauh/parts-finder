@@ -1,0 +1,52 @@
+[
+  { "id": "2119711", "name": "DAF XF 106 Sideskirt set", "oem": "2119711", "brand": "DAF", "condition": "used", "price": 795, "stockQuantity": 3, "category": "Body", "image": "/img/placeholder-part.png", "colours": ["white", "red", "blue"] },
+  { "id": "100002", "name": "DAF XF 106 Headlamp left", "oem": "1949813", "brand": "DAF", "condition": "new", "price": 489, "stockQuantity": 6, "category": "Lighting", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "100003", "name": "DAF XF 106 Sun visor", "oem": "1880397", "brand": "DAF", "condition": "used", "price": 365, "stockQuantity": 0, "category": "Body", "image": "/img/placeholder-part.png", "colours": ["white", "black", "silver"] },
+  { "id": "100004", "name": "DAF CF Air dryer cartridge", "oem": "1878032", "brand": "DAF", "condition": "new", "price": 64, "stockQuantity": 24, "category": "Brakes", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "100005", "name": "DAF XF 105 Mirror housing right", "oem": "1749809", "brand": "DAF", "condition": "used", "price": 145, "stockQuantity": 2, "category": "Body", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "100006", "name": "DAF MX-13 Turbocharger", "oem": "2006468", "brand": "DAF", "condition": "used", "price": 1150, "stockQuantity": 1, "category": "Engine", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "100007", "name": "DAF LF Fuel filter", "oem": "1450184", "brand": "DAF", "condition": "new", "price": 38, "stockQuantity": 40, "category": "Filters", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "100008", "name": "DAF XF 106 Front grille", "oem": "1858234", "brand": "DAF", "condition": "new", "price": 612, "stockQuantity": 0, "category": "Body", "image": "/img/placeholder-part.png", "colours": [] },
+
+  { "id": "200001", "name": "Scania R-series Front bumper", "oem": "2214519", "brand": "Scania", "condition": "used", "price": 690, "stockQuantity": 2, "category": "Body", "image": "/img/placeholder-part.png", "colours": ["white", "black", "red"] },
+  { "id": "200002", "name": "Scania R-series Headlamp right", "oem": "2380952", "brand": "Scania", "condition": "new", "price": 545, "stockQuantity": 4, "category": "Lighting", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "200003", "name": "Scania DC13 Water pump", "oem": "2155893", "brand": "Scania", "condition": "new", "price": 318, "stockQuantity": 7, "category": "Engine", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "200004", "name": "Scania GRS905 Gearbox", "oem": "2122459", "brand": "Scania", "condition": "used", "price": 3450, "stockQuantity": 1, "category": "Transmission", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "200005", "name": "Scania Oil filter", "oem": "2022275", "brand": "Scania", "condition": "new", "price": 29, "stockQuantity": 55, "category": "Filters", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "200006", "name": "Scania S-series Door left", "oem": "2556621", "brand": "Scania", "condition": "used", "price": 980, "stockQuantity": 0, "category": "Cab", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "200007", "name": "Scania Brake disc front", "oem": "1885366", "brand": "Scania", "condition": "new", "price": 172, "stockQuantity": 12, "category": "Brakes", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "200008", "name": "Scania Intercooler", "oem": "1914130", "brand": "Scania", "condition": "used", "price": 420, "stockQuantity": 3, "category": "Cooling", "image": "/img/placeholder-part.png", "colours": [] },
+
+  { "id": "300001", "name": "Volvo FH4 Corner deflector left", "oem": "82221838", "brand": "Volvo", "condition": "used", "price": 235, "stockQuantity": 2, "category": "Body", "image": "/img/placeholder-part.png", "colours": ["white", "blue", "silver", "black"] },
+  { "id": "300002", "name": "Volvo FH4 Headlamp left", "oem": "82425301", "brand": "Volvo", "condition": "new", "price": 598, "stockQuantity": 5, "category": "Lighting", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "300003", "name": "Volvo D13 Fuel injector", "oem": "21371673", "brand": "Volvo", "condition": "new", "price": 455, "stockQuantity": 0, "category": "Engine", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "300004", "name": "Volvo I-Shift AT2612 Gearbox", "oem": "85020284", "brand": "Volvo", "condition": "used", "price": 3900, "stockQuantity": 1, "category": "Transmission", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "300005", "name": "Volvo FH Air filter", "oem": "21834205", "brand": "Volvo", "condition": "new", "price": 74, "stockQuantity": 30, "category": "Filters", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "300006", "name": "Volvo FH4 Mirror assembly right", "oem": "84211421", "brand": "Volvo", "condition": "used", "price": 310, "stockQuantity": 2, "category": "Body", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "300007", "name": "Volvo FM Radiator", "oem": "21061738", "brand": "Volvo", "condition": "new", "price": 865, "stockQuantity": 3, "category": "Cooling", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "300008", "name": "Volvo FH Brake caliper rear", "oem": "85134437", "brand": "Volvo", "condition": "used", "price": 240, "stockQuantity": 0, "category": "Brakes", "image": "/img/placeholder-part.png", "colours": [] },
+
+  { "id": "400001", "name": "Mercedes-Benz Actros MP4 Sun visor", "oem": "A9608100410", "brand": "Mercedes-Benz", "condition": "used", "price": 390, "stockQuantity": 1, "category": "Body", "image": "/img/placeholder-part.png", "colours": ["white", "black"] },
+  { "id": "400002", "name": "Mercedes-Benz Actros MP4 Headlamp right", "oem": "A9608200639", "brand": "Mercedes-Benz", "condition": "new", "price": 720, "stockQuantity": 3, "category": "Lighting", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "400003", "name": "Mercedes-Benz OM471 Turbocharger", "oem": "A4710960999", "brand": "Mercedes-Benz", "condition": "new", "price": 1890, "stockQuantity": 0, "category": "Engine", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "400004", "name": "Mercedes-Benz Actros Air spring", "oem": "A9423201021", "brand": "Mercedes-Benz", "condition": "new", "price": 138, "stockQuantity": 18, "category": "Suspension", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "400005", "name": "Mercedes-Benz Actros Fuel filter", "oem": "A4710902155", "brand": "Mercedes-Benz", "condition": "new", "price": 45, "stockQuantity": 36, "category": "Filters", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "400006", "name": "Mercedes-Benz Actros MP4 Step panel left", "oem": "A9606660301", "brand": "Mercedes-Benz", "condition": "used", "price": 215, "stockQuantity": 4, "category": "Cab", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "400007", "name": "Mercedes-Benz G281 Gearbox", "oem": "A9602601400", "brand": "Mercedes-Benz", "condition": "used", "price": 4250, "stockQuantity": 1, "category": "Transmission", "image": "/img/placeholder-part.png", "colours": [] },
+
+  { "id": "500001", "name": "MAN TGX Side deflector right", "oem": "81637306046", "brand": "MAN", "condition": "used", "price": 260, "stockQuantity": 2, "category": "Body", "image": "/img/placeholder-part.png", "colours": ["white", "red", "grey"] },
+  { "id": "500002", "name": "MAN TGX Tail lamp", "oem": "81252256536", "brand": "MAN", "condition": "new", "price": 96, "stockQuantity": 14, "category": "Lighting", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "500003", "name": "MAN D2676 Water pump", "oem": "51065006692", "brand": "MAN", "condition": "used", "price": 185, "stockQuantity": 0, "category": "Engine", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "500004", "name": "MAN TGS Clutch kit", "oem": "81303050207", "brand": "MAN", "condition": "new", "price": 780, "stockQuantity": 5, "category": "Transmission", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "500005", "name": "MAN TGX Shock absorber front", "oem": "81437016960", "brand": "MAN", "condition": "new", "price": 129, "stockQuantity": 10, "category": "Suspension", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "500006", "name": "MAN TGX Bonnet", "oem": "81611100125", "brand": "MAN", "condition": "used", "price": 640, "stockQuantity": 1, "category": "Cab", "image": "/img/placeholder-part.png", "colours": [] },
+
+  { "id": "600001", "name": "Iveco Stralis Front grille", "oem": "504202367", "brand": "Iveco", "condition": "used", "price": 355, "stockQuantity": 2, "category": "Body", "image": "/img/placeholder-part.png", "colours": ["white", "blue"] },
+  { "id": "600002", "name": "Iveco Stralis Headlamp left", "oem": "41221034", "brand": "Iveco", "condition": "new", "price": 410, "stockQuantity": 0, "category": "Lighting", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "600003", "name": "Iveco Cursor 11 Oil cooler", "oem": "5801415050", "brand": "Iveco", "condition": "new", "price": 295, "stockQuantity": 6, "category": "Cooling", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "600004", "name": "Iveco Stralis Brake pad set", "oem": "2992477", "brand": "Iveco", "condition": "new", "price": 88, "stockQuantity": 22, "category": "Brakes", "image": "/img/placeholder-part.png", "colours": [] },
+
+  { "id": "700001", "name": "Renault T-series Mirror cover left", "oem": "7482599948", "brand": "Renault", "condition": "used", "price": 120, "stockQuantity": 3, "category": "Body", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "700002", "name": "Renault T-series Starter motor", "oem": "7421163543", "brand": "Renault", "condition": "new", "price": 515, "stockQuantity": 4, "category": "Electrical", "image": "/img/placeholder-part.png", "colours": [] },
+  { "id": "700003", "name": "Renault Premium Alternator", "oem": "5010480448", "brand": "Renault", "condition": "used", "price": 230, "stockQuantity": 0, "category": "Electrical", "image": "/img/placeholder-part.png", "colours": [] }
+]
