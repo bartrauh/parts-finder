@@ -1,17 +1,5 @@
 <script setup lang="ts">
-interface Part {
-  id: number
-  name: string
-  oem: string
-  brand: string
-  condition: string
-  price: string
-  quantity: number
-  in_stock: boolean
-  category: string
-  image: string | null
-  colours: string[]
-}
+import type { Part } from '~/types/part'
 
 const route = useRoute()
 const router = useRouter()
@@ -203,7 +191,7 @@ async function addToQuote() {
 
           <UFormField
             label="Quantity"
-            :help="part.in_stock ? `Max ${part.quantity} available` : 'Will be placed on backorder'"
+            :help="part.in_stock ? '' : 'Will be placed on backorder'"
           >
             <UInputNumber
               v-model="quantity"

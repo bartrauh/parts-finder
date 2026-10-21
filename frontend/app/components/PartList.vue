@@ -1,13 +1,5 @@
 <script setup lang="ts">
-interface Part {
-  id: number
-  name: string
-  oem: string
-  brand: string
-  condition: string
-  price: number
-  quantity: number
-}
+import type { Part } from '~/types/part'
 
 interface Paginated<T> {
   data: T[]
@@ -23,15 +15,15 @@ const route = useRoute()
 const router = useRouter()
 
 const conditionItems = [
-  {label: 'All conditions', value: 'all'},
-  {label: 'New', value: 'new'},
-  {label: 'Used', value: 'used'}
+  { label: 'All conditions', value: 'all' },
+  { label: 'New', value: 'new' },
+  { label: 'Used', value: 'used' }
 ]
 
 const sortItems = [
-  {label: 'Default order', value: 'none'},
-  {label: 'Price: low to high', value: 'price_asc'},
-  {label: 'Price: high to low', value: 'price_desc'}
+  { label: 'Default order', value: 'none' },
+  { label: 'Price: low to high', value: 'price_asc' },
+  { label: 'Price: high to low', value: 'price_desc' }
 ]
 
 const toArray = (value: unknown): string[] =>
@@ -48,7 +40,7 @@ const sort = computed(() => toString(route.query.sort))
 const page = computed(() => Number(route.query.page) || 1)
 
 function updateQuery(changes: Record<string, string | string[] | number | undefined>, resetPage = true) {
-  const merged: Record<string, unknown> = {...route.query, ...changes}
+  const merged: Record<string, unknown> = { ...route.query, ...changes }
   if (resetPage) {
     merged.page = undefined
   }
@@ -56,14 +48,14 @@ function updateQuery(changes: Record<string, string | string[] | number | undefi
     Object.entries(merged).filter(([, value]) =>
       value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0))
   ) as Record<string, string | string[]>
-  router.replace({query})
+  router.replace({ query })
 }
 
 const search = ref(q.value ?? '')
 let searchTimeout: ReturnType<typeof setTimeout> | undefined
 watch(search, (value) => {
   clearTimeout(searchTimeout)
-  searchTimeout = setTimeout(() => updateQuery({q: value.trim() || undefined}), 300)
+  searchTimeout = setTimeout(() => updateQuery({ q: value.trim() || undefined }), 300)
 })
 // Keep the input in sync when the URL changes from elsewhere (back/forward)
 watch(q, (value) => {
@@ -74,37 +66,37 @@ watch(q, (value) => {
 
 const selectedBrands = computed({
   get: () => brands.value,
-  set: (value: string[]) => updateQuery({brand: value})
+  set: (value: string[]) => updateQuery({ brand: value })
 })
 
 const selectedCondition = computed({
   get: () => condition.value ?? 'all',
-  set: (value: string) => updateQuery({condition: value === 'all' ? undefined : value})
+  set: (value: string) => updateQuery({ condition: value === 'all' ? undefined : value })
 })
 
 const selectedSort = computed({
   get: () => sort.value ?? 'none',
-  set: (value: string) => updateQuery({sort: value === 'none' ? undefined : value})
+  set: (value: string) => updateQuery({ sort: value === 'none' ? undefined : value })
 })
 
 const currentPage = computed({
   get: () => page.value,
-  set: (value: number) => updateQuery({page: value > 1 ? value : undefined}, false)
+  set: (value: number) => updateQuery({ page: value > 1 ? value : undefined }, false)
 })
 
 const hasActiveFilters = computed(() => !!(q.value || brands.value.length || condition.value || sort.value))
 
 function resetFilters() {
   search.value = ''
-  router.replace({query: {}})
+  router.replace({ query: {} })
 }
 
-const {data: brandOptions} = await useFetch<string[]>('/brands', {
+const { data: brandOptions } = await useFetch<string[]>('/brands', {
   $fetch: api,
-  query: computed(() => ({q: q.value, condition: condition.value}))
+  query: computed(() => ({ q: q.value, condition: condition.value }))
 })
 
-const {data: parts, status, error, refresh} = await useFetch<Paginated<Part>>('/parts', {
+const { data: parts, status, error, refresh } = await useFetch<Paginated<Part>>('/parts', {
   $fetch: api,
   query: computed(() => ({
     'q': q.value,
@@ -118,7 +110,7 @@ const {data: parts, status, error, refresh} = await useFetch<Paginated<Part>>('/
 
 <template>
   <div class="space-y-6">
-    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       <UInput
         v-model="search"
         icon="i-lucide-search"
@@ -166,13 +158,16 @@ const {data: parts, status, error, refresh} = await useFetch<Paginated<Part>>('/
       :actions="[{ label: 'Retry', onClick: () => refresh() }]"
     />
 
-    <UPageGrid v-else-if="status === 'pending' && !parts">
+    <div
+      v-else-if="status === 'pending' && !parts"
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    >
       <USkeleton
-        v-for="n in 6"
+        v-for="n in 8"
         :key="n"
-        class="h-28"
+        class="h-96"
       />
-    </UPageGrid>
+    </div>
 
     <UEmpty
       v-else-if="!parts?.data.length"
@@ -181,18 +176,17 @@ const {data: parts, status, error, refresh} = await useFetch<Paginated<Part>>('/
       description="Try a different search term or adjust the filters."
     />
 
-    <UPageGrid
+    <div
       v-else
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       :class="{ 'opacity-60': status === 'pending' }"
     >
-      <UPageCard
+      <PartCard
         v-for="part in parts.data"
         :key="part.id"
-        :title="part.name"
-        :description="`${part.brand} · ${part.oem} · ${part.condition} · € ${part.price} excl. VAT`"
-        :to="`/parts/${part.id}`"
+        :part="part"
       />
-    </UPageGrid>
+    </div>
 
     <div
       v-if="parts && parts.last_page > 1"
