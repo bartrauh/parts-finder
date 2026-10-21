@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quote;
+use App\Services\QuoteService;
 use Illuminate\Http\Request;
 
 class QuoteController extends Controller
 {
+    public function __construct(private readonly QuoteService $quotes)
+    {
+    }
 
     /**
-     * Show the form for creating a new resource.
+     * Create an empty draft quote for the workshop.
      */
     public function store(Request $request)
     {
-        $quote = new Quote(['totals' => ['total' => 0, 'btw' => 0, 'subtotal' => 0], 'status' => 'draft']);
-        $request->workshop->quotes()->save($quote);
+        $quote = $request->workshop->quotes()->create(['status' => 'draft']);
 
-        return $quote;
+        return response()->json($this->quotes->present($quote), 201);
     }
 
     /**
@@ -24,14 +27,15 @@ class QuoteController extends Controller
      */
     public function show(Quote $quote, Request $request)
     {
-        if($quote->workshop_id != $request->workshop->id) {
-            abort(404);
-        }
-        return $request->workshop->quotes()->findOrFail($quote->id);
+        $this->ensureOwnQuote($request, $quote);
+
+        return $this->quotes->present($quote);
     }
 
-    public function submit(Quote $quote)
+    public function submit(Quote $quote, Request $request)
     {
-        // submit
+        $this->ensureOwnQuote($request, $quote);
+
+        return $this->quotes->present($this->quotes->submit($quote));
     }
 }

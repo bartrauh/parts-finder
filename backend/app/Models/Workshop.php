@@ -11,6 +11,8 @@ class Workshop extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['token'];
+
     public function quotes(): HasMany {
         return $this->hasMany(Quote::class);
     }

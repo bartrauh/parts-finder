@@ -12,7 +12,11 @@ class UpdateQuotelineRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // Another workshop's quote, or a line from another quote, is reported as missing
+        abort_unless($this->route('quote')->workshop_id === $this->workshop->id, 404);
+        abort_unless($this->route('quoteline')->quote_id === $this->route('quote')->id, 404);
+
+        return true;
     }
 
     /**
@@ -23,7 +27,8 @@ class UpdateQuotelineRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'quantity' => 'sometimes|required|integer|min:1',
+            'colour' => 'sometimes|nullable|string',
         ];
     }
 }

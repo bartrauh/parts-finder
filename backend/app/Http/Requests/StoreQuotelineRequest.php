@@ -12,7 +12,10 @@ class StoreQuotelineRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // Another workshop's quote is reported as missing, not forbidden
+        abort_unless($this->route('quote')->workshop_id === $this->workshop->id, 404);
+
+        return true;
     }
 
     /**
@@ -23,7 +26,9 @@ class StoreQuotelineRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'partId' => 'required|integer|exists:parts,id',
+            'quantity' => 'required|integer|min:1',
+            'colour' => 'nullable|string',
         ];
     }
 }
