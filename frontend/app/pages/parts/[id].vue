@@ -13,19 +13,12 @@ interface Part {
   colours: string[]
 }
 
-const config = useRuntimeConfig()
-// SSR runs inside the Docker network, the browser runs on the host
-const baseURL = import.meta.server ? config.apiBase : config.public.apiBase
-const token = import.meta.server ? config.apiToken : config.public.apiToken
-const headers = { Authorization: `Bearer ${token}` }
-
 const route = useRoute()
 const router = useRouter()
 const toast = useToast()
 
 const { data: part, status, error, refresh } = await useFetch<Part>(`/parts/${route.params.id}`, {
-  baseURL,
-  headers
+  $fetch: useApi()
 })
 
 useSeoMeta({ title: () => part.value?.name ?? 'Part' })
@@ -54,24 +47,7 @@ function goBack() {
   }
 }
 
-const QUOTE_KEY = 'quoteId'
-
-function readQuoteId(): string | null {
-  try {
-    return localStorage.getItem(QUOTE_KEY)
-  } catch {
-    return null
-  }
-}
-
-function storeQuoteId(id: string) {
-  try {
-    localStorage.setItem(QUOTE_KEY, id)
-  } catch {
-    // Without storage the quote just won't survive a refresh
-  }
-}
-
+const { addLine, open: quoteOpen } = useQuote()
 const adding = ref(false)
 
 async function addToQuote() {
@@ -80,33 +56,18 @@ async function addToQuote() {
   }
   adding.value = true
   try {
-    let quoteId = readQuoteId()
-    if (!quoteId) {
-      const quote = await $fetch<{ id: number }>('/quote', { baseURL, headers, method: 'POST' })
-      quoteId = String(quote.id)
-      storeQuoteId(quoteId)
-    }
-    await $fetch(`/quote/${quoteId}/quoteline`, {
-      baseURL,
-      headers,
-      method: 'POST',
-      body: {
-        partId: part.value.id,
-        quantity: quantity.value,
-        colour: colour.value ?? null
-      }
-    })
+    await addLine(part.value.id, quantity.value, colour.value ?? null)
     toast.add({
       title: 'Added to quote',
       description: `${quantity.value} × ${part.value.name}`,
       color: 'success',
-      icon: 'i-lucide-check'
+      icon: 'i-lucide-check',
+      actions: [{ label: 'View quote', onClick: () => { quoteOpen.value = true } }]
     })
   } catch (e) {
-    const message = (e as { data?: { message?: string } }).data?.message
     toast.add({
       title: 'Could not add to quote',
-      description: message ?? 'Please try again.',
+      description: apiErrorMessage(e),
       color: 'error',
       icon: 'i-lucide-circle-alert'
     })

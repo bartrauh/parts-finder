@@ -37,6 +37,7 @@ useSeoMeta({
       </template>
 
       <template #right>
+        <QuoteDrawer />
         <UColorModeButton />
       </template>
     </UHeader>

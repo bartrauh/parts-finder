@@ -17,10 +17,7 @@ interface Paginated<T> {
   total: number
 }
 
-const config = useRuntimeConfig()
-// SSR runs inside the Docker network, the browser runs on the host
-const baseURL = import.meta.server ? config.apiBase : config.public.apiBase
-const token = import.meta.server ? config.apiToken: config.public.apiToken
+const api = useApi()
 
 const route = useRoute()
 const router = useRouter()
@@ -103,21 +100,19 @@ function resetFilters() {
 }
 
 const {data: brandOptions} = await useFetch<string[]>('/brands', {
-  baseURL,
-  query: computed(() => ({q: q.value, condition: condition.value})),
-  headers: {Authorization: `Bearer ${token}`}
+  $fetch: api,
+  query: computed(() => ({q: q.value, condition: condition.value}))
 })
 
 const {data: parts, status, error, refresh} = await useFetch<Paginated<Part>>('/parts', {
-  baseURL,
+  $fetch: api,
   query: computed(() => ({
     'q': q.value,
     'brand[]': brands.value,
     'condition': condition.value,
     'sort': sort.value,
     'page': page.value > 1 ? page.value : undefined
-  })),
-  headers: {Authorization: `Bearer ${token}`}
+  }))
 })
 </script>
 
