@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('quotes', function(Blueprint $table) {
             $table->id();
-            $table->enum('status', ['draft', 'submitted'])->default('new');
+            $table->enum('status', ['draft', 'submitted'])->default('draft');
             $table->timestamp('submitted_at')->nullable();
             $table->json('totals')->nullable();
             $table->foreignId('workshop_id')->constrained();

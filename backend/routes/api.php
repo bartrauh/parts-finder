@@ -9,5 +9,5 @@ Route::get('/parts', [PartController::class, 'index']);
 Route::get('/brands', [PartController::class, 'brands']);
 Route::get('/parts/{part}', [PartController::class, 'show']);
 Route::apiResource('quote', QuoteController::class, ['only' => ['show', 'create']]);
-Route::post('/quote/{quote}/submit', QuoteController::class, 'submit');
+Route::post('/quote/{quote}/submit', [QuoteController::class, 'submit']);
 Route::apiResource('quote.quoteline', QuotelineController::class);
