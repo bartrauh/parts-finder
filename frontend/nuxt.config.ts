@@ -13,10 +13,13 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     // Server-side (SSR) API base, overridden by NUXT_API_BASE
-    apiBase: 'http://localhost:8000/api',
+    apiBase: 'http://localhost:8001/api',
+    apiToken: 'Bo0NmQKBkj',
+
     public: {
       // Browser API base, overridden by NUXT_PUBLIC_API_BASE
-      apiBase: 'http://localhost:8000/api'
+      apiBase: 'http://localhost:8000/api',
+      apiToken: 'Bo0NmQKBkj',
     }
   },
 
