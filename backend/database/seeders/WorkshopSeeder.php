@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Quote;
 use App\Models\Workshop;
-use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class WorkshopSeeder extends Seeder
@@ -13,6 +13,16 @@ class WorkshopSeeder extends Seeder
      */
     public function run(): void
     {
-        Workshop::factory()->count(2)->state(new Sequence(['discount' => 0], ['discount' => 10]))->create();
+        // Fixed tokens so the frontend can be configured with a known one
+        Workshop::factory()->has(Quote::factory()->count(2))->create([
+            'name' => 'Workshop A',
+            'token' => 'Bo0NmQKBkj',
+            'discount' => 0,
+        ]);
+        Workshop::factory()->has(Quote::factory()->count(2))->create([
+            'name' => 'Workshop B',
+            'token' => 'Xk7pLq2Rm9',
+            'discount' => 10,
+        ]);
     }
 }

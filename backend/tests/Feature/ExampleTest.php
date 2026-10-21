@@ -44,4 +44,16 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
         $response->assertJsonCount(1, 'data');
     }
+public function test_quote_good(): void
+    {
+        $response = $this->withToken($this->token)->get('/api/quote/1');
+
+        $response->assertStatus(200);
+    }
+    public function test_quote_noaccess(): void
+    {
+        $response = $this->withToken($this->token)->get('/api/quote/3');
+
+        $response->assertStatus(404);
+    }
 }

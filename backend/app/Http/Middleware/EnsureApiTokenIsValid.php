@@ -18,13 +18,12 @@ class EnsureApiTokenIsValid
     {
         $token = $request->bearerToken();
 
-        // 2. Check if token is missing
         if (!$token) {
             return response()->json([
                 'message' => 'Unauthorized: API token is missing.'
             ], 401);
         }
-        // 3. Check if the token exists in the database
+
         $workshop = Workshop::where('token', $token)->first();
 
         if (!$workshop) {
