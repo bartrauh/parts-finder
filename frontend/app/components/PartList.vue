@@ -195,6 +195,7 @@ const {data: parts, status, error, refresh} = await useFetch<Paginated<Part>>('/
         :key="part.id"
         :title="part.name"
         :description="`${part.brand} · ${part.oem} · ${part.condition} · € ${part.price} excl. VAT`"
+        :to="`/parts/${part.id}`"
       />
     </UPageGrid>
 
