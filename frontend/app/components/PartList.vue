@@ -170,7 +170,7 @@ const { data: parts, status, error, refresh } = await useFetch<Paginated<Part>>(
     </div>
 
     <UEmpty
-      v-else-if="!parts?.data.length"
+      v-else-if="!parts?.data?.length"
       icon="i-lucide-package-search"
       title="No parts found"
       description="Try a different search term or adjust the filters."
