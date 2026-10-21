@@ -22,9 +22,12 @@ class QuoteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Quote $quote)
+    public function show(Quote $quote, Request $request)
     {
-        return $quote;
+        if($quote->workshop_id != $request->workshop->id) {
+            abort(404);
+        }
+        return $request->workshop->quotes()->findOrFail($quote->id);
     }
 
     public function submit(Quote $quote)

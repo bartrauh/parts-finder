@@ -31,7 +31,7 @@ class Part extends Model
 
     protected function inStock(): Attribute {
         return new Attribute(
-            get: fn ($value, $attributes) => ($attributes->stock ?? 0) < 1
+            get: fn ($value, $attributes) => $attributes['quantity'] > 1
         );
     }
 }
